@@ -1,0 +1,62 @@
+// .section-about {
+//   background-color: $color-grey-light-1;
+//   padding: 25rem 0;
+//   margin-top: -20vh;
+// }
+
+.row {
+  // @include reset-font;
+  @include size(100%, auto);
+  max-width: $grid-width;
+  background-color: darken(#eee, 5%);
+  @include center-block;
+  @include font-size(18);
+  @include line-height(26);
+
+  &:not(:last-child) {
+    margin-bottom: $gutter-vertical;
+  }
+
+  @extend %clearfix;
+
+  [class^="col-"] {
+    // @include background-gradient(orangered, #{$color-secondary-dark}, horizontal);
+    float: left;
+
+    &:not(:last-child) {
+      margin-right: $gutter-horizontal;
+    }
+  }
+
+  .col-1-of-2 {
+    @include size(calc((100% - #{$gutter-horizontal}) / 2), auto);
+    // @include background-gradient(orangered, #{$color-secondary-dark}, horizontal);
+  }
+
+  .col-1-of-3 {
+    @include size(calc((100% - 2 * #{$gutter-horizontal}) / 3), auto);
+  }
+
+  .col-1-of-4 {
+    @include size(calc((100% - 3 * #{$gutter-horizontal}) / 4), auto);
+  }
+
+  .col-2-of-3 {
+    @include size(calc(2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal}), auto);
+    // @include background-gradient(#{$color-secondary-light}, #{$color-secondary-dark}, horizontal);
+  }
+
+  .col-2-of-4 {
+    @include size(calc(2 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal}), auto);
+    // @include background-gradient(darken($color-tertiary-light, 10%), #{$color-tertiary-light}, horizontal);
+  }
+
+  .col-3-of-4 {
+    @include size(calc(3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal}), auto);
+    // @include background-gradient(darken($color-tertiary-dark, 4%), #{$color-tertiary-light}, horizontal);
+  }
+}
+
+.grid-test {
+  margin: 6rem 0;
+}
