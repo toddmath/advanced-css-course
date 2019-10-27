@@ -1,5 +1,5 @@
 .header {
-  @include size(unset, 95vh);
+  @include size(unset, calc(100vh - 2 * 3rem));
   background-image: linear-gradient(56deg, rgba($color-white, 0.065) 0%, transparent 69%, transparent 69%, rgba(160, 160, 160, 0.025) 100%),
     linear-gradient(194deg, rgba(102, 102, 102, 0.185) 0%, rgba(102, 102, 102, 0.185) 60%, rgba(67, 67, 67, 0.185) 60%, rgba(67, 67, 67, 0.185) 100%),
     linear-gradient(326deg, transparent 0%, rgba(20, 20, 20, 0.125) 45%, rgba(66, 66, 66, 0.02) 45%, transparent 100%),
@@ -12,14 +12,29 @@
     url('../img/hero.jpg');
   background-size: cover;
   background-position: top;
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% calc(80vh - 2 * 3rem), 0 100%); // 80vh - 60px
   position: relative;
   @include ha;
+
+  @include media('>=wide') {
+    @include size(unset, calc(100vh - 2 * 3.4rem));
+    clip-path: polygon(0 0, 100% 0, 100% calc(80vh - 2 * 3.4rem), 0 100%); // 80vh - 68px
+  }
+
+  @include media('>phone', '<=tablet') {
+    @include size(unset, calc(100vh - 2 * 2.4rem));
+    clip-path: polygon(0 0, 100% 0, 100% calc(80vh - 2 * 2.4rem), 0 100%); // 80vh - 48px
+  }
+
+  @include media('<=phone') {
+    @include size(unset, calc(100vh - 2 * 1.4rem));
+    clip-path: polygon(0 0, 100% 0, 100% calc(80vh - 2 * 1.4rem), 0 100%); // 80vh - 28px
+  }
 
   &__logo-box {
     @include position(absolute, $top: 4rem, $left: 4rem);
 
-    @include mq($until: tablet) {
+    @include media('<=tablet') {
       @include position(absolute, $top: 3rem, $left: 3rem);
     }
   }
@@ -27,7 +42,7 @@
   &__logo {
     @include size(unset, 3.5rem);
 
-    @include mq($until: tablet) {
+    @include media('<=tablet') {
       @include size(auto, 3rem);
     }
   }
@@ -36,5 +51,7 @@
     @include center-both();
     top: 42%;
     text-align: center;
+    @include size(auto, unset);
+    @include box-sizing(border-box);
   }
 }

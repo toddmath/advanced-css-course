@@ -3,6 +3,10 @@
 @import "abstracts/functions";
 @import "abstracts/mixins";
 
+@import "vendor/reset";
+@import "vendor/include_media";
+@import "vendor/_open-iconic.scss";
+
 @import "base/animations";
 @import "base/base";
 @import "base/typography";
@@ -13,10 +17,10 @@
 // @import "node_modules/sass-mq/mq";
 // @import "sass-mq";
 // @import "node_modules/compass-mixins/lib/animate";
+@import "pages/home";
 
 @import "components/button";
+@import "components/composition";
 
 @import "layout/grid";
 @import "layout/header";
-
-@import "pages/home";

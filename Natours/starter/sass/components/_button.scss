@@ -11,11 +11,16 @@
     @include transition(0.2s, ease-out);
     position: relative;
     box-shadow: 0 0.8rem 2.6rem rgba($color-black, 0.16);
-    font-size: 1.6rem;
+    @include font-size(16);
     @include line-height(16);
     @include ha;
     border: none;
     cursor: pointer;
+
+    @include media('>phone', '<=tablet') {
+      padding: 1.6rem 3rem;
+      @include font-size(14);
+    }
   }
 
   &:hover {
@@ -63,7 +68,7 @@
     @include size(100%);
     border-radius: 10rem;
     z-index: -1;
-    @include transition(0.4s, ease-out);
+    @include transition(.4s, cubic-bezier(0.39, 0.575, 0.565, 1));
     @include position(absolute, $top: 0, $left: 0);
   }
 }
@@ -78,7 +83,10 @@
     text-decoration: none;
     border-bottom: 1px solid $color-primary;
     padding: 3px;
-    @include transition(.2s, ease-out);
+    @include transition(333ms, cubic-bezier(0.39, 0.575, 0.565, 1));
+    transition-delay: 33ms;
+    @include border-radius-separate(.5rem, .5rem, 0, 0);
+    @include ha;
   }
 
   &:hover {
@@ -86,6 +94,7 @@
     color: $color-white;
     box-shadow: 0 1rem 2rem rgba($color-black, .15);
     @include transform(translateY(-2px));
+    @include border-radius-separate(.5rem, .5rem, .5rem, .5rem);
   }
 
   &:active {
