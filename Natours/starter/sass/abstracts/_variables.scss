@@ -25,6 +25,9 @@ $color-grey-dark-3: #333;
 $color-white: #fff;
 $color-black: rgb(0, 0, 0);
 
+// MISC (border, radius, etc)
+$border-radius: 3px;
+
 // GRID
 $grid-width: 114rem;
 $gutter-vertical: 8rem;
@@ -38,11 +41,33 @@ $wide: 1300px;
 
 // sass-mq Media-Query helper
 $mq-responsive: true;
-$mq-breakpoints: (mobile: $mobile, tablet: $tablet, desktop: $desktop, wide: $wide);
+$mq-breakpoints: (
+  mobile: $mobile,
+  tablet: $tablet,
+  desktop: $desktop,
+  wide: $wide
+);
 $mq-show-breakpoints: (mobile, tablet, desktop, wide);
 $mq-static-breakpoint: desktop;
 $mq-media-type: screen;
 
+// modularscale
+$modularscale: (
+  base: 1rem 1.2rem 1.6rem,
+  ratio: 1.5,
+  420px: (
+    ratio: 1.5
+  ),
+  740px: (
+    ratio: 1.6
+  ),
+  980px: (
+    ratio: 1.7
+  ),
+  1300px: (
+    ratio: 1.8
+  )
+);
 
 /// compass/css3 cross-browser support
 // $graceful-usage-threshold: 0.1;

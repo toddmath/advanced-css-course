@@ -5,7 +5,8 @@
 
 @import "vendor/reset";
 @import "vendor/include_media";
-@import "vendor/_open-iconic.scss";
+@import "vendor/_open-iconic";
+@import "vendor/modularscale";
 
 @import "base/animations";
 @import "base/base";
@@ -19,8 +20,13 @@
 // @import "node_modules/compass-mixins/lib/animate";
 @import "pages/home";
 
+@import "components/bg-video";
 @import "components/button";
+@import "components/card";
 @import "components/composition";
+@import "components/feature-box";
+@import "components/form";
+@import "components/story";
 
 @import "layout/grid";
 @import "layout/header";

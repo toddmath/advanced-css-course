@@ -1,8 +1,4 @@
 {
-  "cSpell.words": [
-    "Dribbble",
-    "mquery",
-    "stepnum",
-    "voff"
-  ]
+  "cSpell.words": ["Dribbble", "mquery", "stepnum", "voff"],
+  "color-highlight.sass.includePaths": ["Natours/starter/sass"]
 }

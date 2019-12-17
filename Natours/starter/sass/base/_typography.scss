@@ -38,6 +38,8 @@ body {
   margin-bottom: 6rem;
   text-align: center;
   @include size(auto, 100%);
+  white-space: nowrap;
+  font-size: 0;
 
   &--main {
     @include line-height(64);
@@ -47,9 +49,13 @@ body {
     font-weight: 700;
     letter-spacing: 3.5rem;
     @include slide-in-from(x, -10rem, 1s ease-out);
+    white-space: normal;
+    text-align: center;
+    // @include ms-respond(font-size, 9);
+    // @include ms-respond(letter-spacing, 7);
 
     @include media('<=tablet') {
-      @include size(98%, auto);
+      @include size(100%, auto);
       @include font-size(44);
       letter-spacing: 2.5rem;
       @include line-height(48);
@@ -59,11 +65,17 @@ body {
   &--sub {
     @include line-height(26);
     display: block;
-    // @include size(100%, 100%);
-    @include font-size(20);
+    @include size(100%, 100%);
+    @include font-size(22);
+    // @include ms-respond(font-size, 3);
+    // @include ms-respond(letter-spacing, 2);
+    // @include ms-respond(word-spacing, 1);
     font-weight: 700;
     letter-spacing: 1.75rem;
+    word-spacing: -.9rem;
     @include slide-in-from(x, 10rem, 1s ease-out);
+    white-space: normal;
+    text-align: center;
 
     @include media('<=tablet') {
       @include font-size(16.2);
@@ -75,7 +87,8 @@ body {
 }
 
 .heading-secondary {
-  @include font-size(35);
+  // @include font-size(35);
+  @include ms-respond(font-size, 6);
   text-transform: uppercase;
   font-weight: 700;
   @include background-gradient($color-primary-light, $color-primary-dark, horizontal);
@@ -95,13 +108,15 @@ body {
 }
 
 .heading-tertiary {
-  @include font-size(16);
+  // @include font-size(16);
+  @include ms-respond(font-size, 4);
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .paragraph {
-  @include font-size(16);
+  // @include font-size(16);
+  @include ms-respond(font-size, 3);
 
   &:not(:last-child) {
     margin-bottom: 3rem;
