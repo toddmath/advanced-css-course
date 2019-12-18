@@ -1,16 +1,17 @@
-@include font-face(Lato, '../css/fonts/lato-v16-latin-100', 100, normal);
-@include font-face(Lato, '../css/fonts/lato-v16-latin-100italic', 100, italic);
-@include font-face(Lato, '../css/fonts/lato-v16-latin-300', 300, normal);
-@include font-face(Lato, '../css/fonts/lato-v16-latin-300italic', 300, italic);
-@include font-face(Lato, '../css/fonts/lato-v16-latin-regular', 400, normal);
-@include font-face(Lato, '../css/fonts/lato-v16-latin-italic', 400, italic);
-@include font-face(Lato, '../css/fonts/lato-v16-latin-700', 700, normal);
-@include font-face(Lato, '../css/fonts/lato-v16-latin-700italic', 700, italic);
-@include font-face(Lato, '../css/fonts/lato-v16-latin-900', 900, normal);
-@include font-face(Lato, '../css/fonts/lato-v16-latin-900italic', 900, italic);
+@include font-face(Lato, "./fonts/lato-v16-latin-100", 100, normal);
+@include font-face(Lato, "./fonts/lato-v16-latin-100italic", 100, italic);
+@include font-face(Lato, "./fonts/lato-v16-latin-300", 300, normal);
+@include font-face(Lato, "./fonts/lato-v16-latin-300italic", 300, italic);
+@include font-face(Lato, "./fonts/lato-v16-latin-regular", 400, normal);
+@include font-face(Lato, "./fonts/lato-v16-latin-italic", 400, italic);
+@include font-face(Lato, "./fonts/lato-v16-latin-700", 700, normal);
+@include font-face(Lato, "./fonts/lato-v16-latin-700italic", 700, italic);
+@include font-face(Lato, "./fonts/lato-v16-latin-900", 900, normal);
+@include font-face(Lato, "./fonts/lato-v16-latin-900italic", 900, italic);
 
 body {
-  font-family: 'Lato', sans-serif;
+  @include antialias;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
   @include line-height(17);
   color: $color-grey-dark;
@@ -18,17 +19,23 @@ body {
   @include background-size(100%);
   background-color: $color-white;
 
-  @include media('>=wide') {
+  @include media(">=wide") {
     padding: 3.4rem;
   }
 
-  @include media('>phone', '<=tablet') {
+  @include media(">phone", "<=tablet") {
     padding: 2.4rem;
   }
 
-  @include media('<=phone') {
+  @include media("<=phone") {
     padding: 1.4rem;
   }
+}
+
+*,
+*:before,
+*:after {
+  -webkit-font-smoothing: inherit;
 }
 
 .heading-primary {
@@ -54,7 +61,7 @@ body {
     // @include ms-respond(font-size, 9);
     // @include ms-respond(letter-spacing, 7);
 
-    @include media('<=tablet') {
+    @include media("<=tablet") {
       @include size(100%, auto);
       @include font-size(44);
       letter-spacing: 2.5rem;
@@ -72,16 +79,15 @@ body {
     // @include ms-respond(word-spacing, 1);
     font-weight: 700;
     letter-spacing: 1.75rem;
-    word-spacing: -.9rem;
+    word-spacing: -0.9rem;
     @include slide-in-from(x, 10rem, 1s ease-out);
     white-space: normal;
     text-align: center;
 
-    @include media('<=tablet') {
+    @include media("<=tablet") {
       @include font-size(16.2);
       letter-spacing: 1.14rem;
       @include line-height(20);
-      ;
     }
   }
 }
@@ -91,19 +97,23 @@ body {
   @include ms-respond(font-size, 6);
   text-transform: uppercase;
   font-weight: 700;
-  @include background-gradient($color-primary-light, $color-primary-dark, horizontal);
+  @include background-gradient(
+    $color-primary-light,
+    $color-primary-dark,
+    horizontal
+  );
   @include line-height(35);
   display: inline-block;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  @include transition(.2s, ease-out);
+  @include transition(0.2s, ease-out);
   letter-spacing: 2px;
   @include ha;
 
   &:hover {
     transform: skew(15deg, 2deg) scale(1.1);
-    text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+    text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
   }
 }
 

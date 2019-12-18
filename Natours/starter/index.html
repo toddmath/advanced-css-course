@@ -8,10 +8,30 @@
   <link rel="stylesheet" href="css/icon-font.css">
   <!-- <link rel="stylesheet" href="css/open-iconic.min.css"> -->
   <link rel="stylesheet" href="css/style.css">
-  <script type="text/javascript" src="js/prefixfree.min.js"></script>
+  <!-- <script type="text/javascript" src="js/prefixfree.min.js"></script> -->
   <link rel="shortcut icon" type="image/png" href="img/favicon.png">
   <title>Natours | Exciting tours for adventurous people</title>
 </head>
+
+<div class="navigation">
+  <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+
+  <label for="navi-toggle" class="navigation__button">
+    <span class="navigation__icon">&nbsp;</span>
+  </label>
+
+  <div class="navigation__background">&nbsp;</div>
+
+  <nav class="navigation__nav">
+    <ul class="navigation__list">
+      <li class="navigation__item"><a href="#" class="navigation__link">About Natours</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Your benefits</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Popular tours</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Stories</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Book now</a></li>
+    </ul>
+  </nav>
+</div>
 
 <body>
   <header class="header">
@@ -299,13 +319,37 @@
               </div>
 
               <div class="form__group">
-                <input type="text" class="form__input" placeholder="Full Name" id="name" required>
+                <input type="text" class="form__input" placeholder="Full Name" aria-placeholder="Full Name" id="name"
+                  required>
                 <label for="name" class="form__label">Full name</label>
               </div>
 
               <div class="form__group">
-                <input type="email" class="form__input" placeholder="Email address" id="email" required>
+                <input type="email" class="form__input" placeholder="Email address" aria-placeholder="Email address"
+                  id="email" required>
                 <label for="email" class="form__label">Email address</label>
+              </div>
+
+              <div class="form__group u-margin-bottom-medium">
+                <div class="form__radio-group">
+                  <input type="radio" class="form__radio-input" id="small" name="size">
+                  <label for="small" class="form__radio-label" tabindex="0">
+                    <span class="form__radio-button"></span>
+                    Small tour group
+                  </label>
+                </div>
+
+                <div class="form__radio-group">
+                  <input type="radio" class="form__radio-input" id="large" name="size">
+                  <label for="large" class="form__radio-label" tabindex="0">
+                    <span class="form__radio-button"></span>
+                    Large tour group
+                  </label>
+                </div>
+              </div>
+
+              <div class="form__group">
+                <button class="btn btn--green">Next step &rarr;</button>
               </div>
             </form>
           </div>
@@ -314,6 +358,61 @@
     </section>
 
   </main>
+
+  <footer class="footer">
+    <div class="footer__logo-box">
+      <img src="img/logo-green-2x.png" alt="Full logo" class="footer__logo">
+    </div>
+    <div class="row">
+      <div class="col-1-of-2">
+        <div class="footer__navigation">
+          <ul class="footer__list">
+            <li class="footer__item"><a href="#" class="footer__link">Company</a></li>
+            <li class="footer__item"><a href="#" class="footer__link">Contact us</a></li>
+            <li class="footer__item"><a href="#" class="footer__link">Careers</a></li>
+            <li class="footer__item"><a href="#" class="footer__link">Privacy policy</a></li>
+            <li class="footer__item"><a href="#" class="footer__link">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-1-of-2">
+        <p class="footer__copyright">
+          Designed by <a href="#" class="footer__link">Jonas Schmedtmann</a> for his online course <a href="#"
+            class="footer__link">Advanced CSS and Sass</a>. Copyright &copy; by Jonas Schmedtmann. You are 100% allowed
+          to use this webpage for both personal and commercial use, but NOT to claim it as your own design. A credit to
+          the original author, Jonas Schmedtmann, is of course highly appreciated!
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="popup">
+    <div class="popup__content">
+      <div class="popup__left">
+        <img src="img/nat-8.jpg" alt="Tour Photo" class="popup__img">
+        <img src="img/nat-9.jpg" alt="Tour Photo" class="popup__img">
+      </div>
+      <div class="popup__right">
+        <h2 class="heading-secondary u-margin-bottom-small">Start booking now</h2>
+        <h3 class="heading-tertiary u-margin-bottom-medium">Important &ndash; Please read these terms before booking
+        </h3>
+        <p class="popup__text">Well, the way they make shows is, they make one show. That show's called a pilot. Then
+          they show that show to the people
+          who make shows, and on the strength of that one show they decide if they're going to make more shows. Some
+          pilots get
+          picked and become television programs. Some don't, become nothing. She starred in one of the ones that became
+          nothing. Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most
+          popular gun in
+          American crime. Do you believe that shit? It actually says that in the little book that comes with it: the
+          most popular
+          gun in American crime. Like they're actually proud of that shit.</p>
+        <div class="u-center-children">
+          <a href="#" class="btn btn--green">Book now</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <!-- <section class="grid-test">

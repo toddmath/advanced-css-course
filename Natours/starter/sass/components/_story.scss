@@ -14,6 +14,7 @@
   // }
 
   &__shape {
+    @include hardware;
     @include size(15rem, 15rem);
     float: left;
     -webkit-shape-outside: circle(50% at 50% 50%);

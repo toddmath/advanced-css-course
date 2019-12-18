@@ -1,26 +1,31 @@
-.btn,
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  border-radius: 10rem;
-  @include transition(0.2s, ease-out);
-  position: relative;
-  box-shadow: 0 0.8rem 2.6rem rgba($color-black, 0.16);
-  @include font-size(16);
-  @include line-height(16);
-  border: none;
-  cursor: pointer;
-
-  @include media(">phone", "<=tablet") {
-    padding: 1.6rem 3rem;
-    @include font-size(14);
-  }
-}
-
 .btn {
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    @include transition(0.2s, ease-out);
+    position: relative;
+    box-shadow: 0 0.8rem 2.6rem rgba($color-black, 0.16);
+    @include font-size(16);
+    @include line-height(16);
+    border: none;
+    cursor: pointer;
+    @include unselectable;
+
+    @include media(">phone", "<=tablet") {
+      padding: 1.6rem 3rem;
+      @include font-size(14);
+    }
+
+    // change for the <button> element
+    border: none;
+    cursor: pointer;
+  }
+
   &:hover {
     @include transform(translateY(-3px));
     box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
@@ -31,7 +36,8 @@
     }
   }
 
-  &:active {
+  &:active,
+  &:focus {
     outline: none;
     @include transform(translateY(-0.1rem));
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
@@ -41,18 +47,55 @@
     background-color: $color-white;
     color: $color-grey-dark;
     border: 1pt solid $color-primary-dark;
+    @include line-height(16);
+    @include transition(0.3s, ease-out);
+    outline: 3px solid transparent;
 
     &::after {
       background-color: $color-white;
+    }
+
+    &:focus {
+      outline: 3px solid $color-white;
+      outline-offset: 3px;
+      @include transform(translateY(-3px));
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+      &::after {
+        @include transform(scale(1.4, 1.6));
+        @include opacity(0);
+      }
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
     }
   }
 
   &--green {
     background-color: $color-primary;
     color: $color-white;
+    @include transition(0.3s, ease-out);
+    outline: 3px solid transparent;
 
     &::after {
       background-color: $color-primary;
+    }
+
+    &:focus {
+      outline: 3px solid $color-primary;
+      outline-offset: 3px;
+      @include transform(translateY(-3px));
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+      &::after {
+        @include transform(scale(1.4, 1.6));
+        @include opacity(0);
+      }
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
     }
   }
 
@@ -103,5 +146,19 @@
   &:active {
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
     @include transform(translateY(0));
+  }
+
+  &:focus {
+    outline: 3px solid $color-primary;
+    outline-offset: 3px;
+    @include transform(translateY(-2px));
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    @include border-radius-separate(0.5rem, 0.5rem, 0.5rem, 0.5rem);
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
   }
 }

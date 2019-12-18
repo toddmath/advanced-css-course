@@ -153,6 +153,10 @@
 
   &__details {
     padding: 3rem;
+    letter-spacing: 0.112rem;
+    font-weight: 300;
+    @include line-height(26);
+    text-transform: capitalize;
 
     ul {
       list-style: none;
@@ -190,10 +194,13 @@
   &__price-only {
     font-size: 1.4rem;
     text-transform: uppercase;
+    @include line-height(14);
+    // margin-bottom: 0.5rem;
   }
 
   &__price-value {
     font-size: 6rem;
     font-weight: 100;
+    @include line-height(60);
   }
 }

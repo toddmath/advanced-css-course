@@ -5,7 +5,7 @@
 
 @import "vendor/reset";
 @import "vendor/include_media";
-@import "vendor/_open-iconic";
+// @import "vendor/_open-iconic";
 @import "vendor/modularscale";
 
 @import "base/animations";
@@ -27,6 +27,9 @@
 @import "components/feature-box";
 @import "components/form";
 @import "components/story";
+@import "components/popup";
 
 @import "layout/grid";
 @import "layout/header";
+@import "layout/footer";
+@import "layout/navigation";

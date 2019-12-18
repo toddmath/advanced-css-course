@@ -8,12 +8,10 @@
 ////
 /// cSpell: Disable
 
-
 /// Base font size setting for Mixins
 /// @access public
 /// @type Length
 $base-font-size: 10px !default;
-
 
 /// Mixin helper to output vendor-prefixed CSS
 /// @access private
@@ -29,7 +27,6 @@ $base-font-size: 10px !default;
   #{$property}: $value;
 }
 
-
 /// Mixin helper to prefix `@keyframes`
 /// @access private
 /// @param {String} $name - Animation name
@@ -37,11 +34,38 @@ $base-font-size: 10px !default;
   @-webkit-keyframes #{$name} {
     @content;
   }
-
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @-o-keyframes #{$name} {
+    @content;
+  }
   @keyframes #{$name} {
     @content;
   }
 }
+
+@mixin word-wrap() {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+// @mixin keyframes($name) {
+//   @-webkit-keyframes #{$name} {
+//     @content;
+//   }
+
+//   @keyframes #{$name} {
+//     @content;
+//   }
+// }
 
 /// Background gradient helper
 /// @access public
@@ -61,27 +85,25 @@ $base-font-size: 10px !default;
 @mixin background-gradient($start-color, $end-color, $orientation) {
   background: $start-color;
 
-  @if $orientation=='vertical' {
+  @if $orientation== "vertical" {
     background: -webkit-linear-gradient(top, $start-color, $end-color);
     background: linear-gradient(to bottom, $start-color, $end-color);
-  }
-
-  @else if $orientation=='horizontal' {
+  } @else if $orientation== "horizontal" {
     background: -webkit-linear-gradient(left, $start-color, $end-color);
     background: linear-gradient(to right, $start-color, $end-color);
-  }
-
-  @else if $orientation=='bottomRight' {
+  } @else if $orientation== "bottomRight" {
     background: -webkit-linear-gradient(45deg, $start-color, $end-color);
     background: linear-gradient(to bottom right, $start-color, $end-color);
-  }
-
-  @else {
-    background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+  } @else {
+    background: -webkit-radial-gradient(
+      center,
+      ellipse cover,
+      $start-color,
+      $end-color
+    );
     background: radial-gradient(ellipse at center, $start-color, $end-color);
   }
 }
-
 
 /// Background size helper
 /// @access public
@@ -98,9 +120,8 @@ $base-font-size: 10px !default;
 ///     background-size: 100% 100%;
 ///   }
 @mixin background-size($width, $height: $width) {
-  @include prefix(background-size, $width $height, 'webkit''moz');
+  @include prefix(background-size, $width $height, "webkit" "moz");
 }
-
 
 /// Separated border-radius helpers
 /// @access public
@@ -127,13 +148,25 @@ $base-font-size: 10px !default;
 ///     -moz-border-bottom-left-radius: 4px;
 ///     border-bottom-left-radius: 4px;
 ///   }
-@mixin border-radius-separate($top-left-radius, $top-right-radius, $bottom-right-radius, $bottom-left-radius) {
-  @include prefix(border-top-left-radius, $top-left-radius, 'webkit''moz');
-  @include prefix(border-top-right-radius, $top-right-radius, 'webkit''moz');
-  @include prefix(border-bottom-right-radius, $bottom-right-radius, 'webkit''moz');
-  @include prefix(border-bottom-left-radius, $bottom-left-radius, 'webkit''moz');
+@mixin border-radius-separate(
+  $top-left-radius,
+  $top-right-radius,
+  $bottom-right-radius,
+  $bottom-left-radius
+) {
+  @include prefix(border-top-left-radius, $top-left-radius, "webkit" "moz");
+  @include prefix(border-top-right-radius, $top-right-radius, "webkit" "moz");
+  @include prefix(
+    border-bottom-right-radius,
+    $bottom-right-radius,
+    "webkit" "moz"
+  );
+  @include prefix(
+    border-bottom-left-radius,
+    $bottom-left-radius,
+    "webkit" "moz"
+  );
 }
-
 
 /// Box-sizing helper
 /// @access public
@@ -148,9 +181,8 @@ $base-font-size: 10px !default;
 ///     box-sizing: border-box;
 ///   }
 @mixin box-sizing($type) {
-  @include prefix(box-sizing, $type, 'moz');
+  @include prefix(box-sizing, $type, "moz");
 }
-
 
 /// Horizontally centers block elements
 /// @access public
@@ -169,7 +201,6 @@ $base-font-size: 10px !default;
   margin-left: auto;
   margin-right: auto;
 }
-
 
 /// Horizontally and vertically centers block elements
 /// Important: you must have a parent element with `position: relative`.
@@ -191,9 +222,8 @@ $base-font-size: 10px !default;
   position: absolute;
   top: 50%;
   left: 50%;
-  @include prefix(transform, translate(-50%, -50%), 'webkit''ms');
+  @include prefix(transform, translate(-50%, -50%), "webkit" "ms");
 }
-
 
 /// Vertically centers block elements with known height.
 /// @access public
@@ -233,9 +263,107 @@ $base-font-size: 10px !default;
 @mixin center-h--unk {
   position: relative;
   top: 50%;
-  @include prefix(transform, translateY(-50%), 'webkit''ms');
+  @include prefix(transform, translateY(-50%), "webkit" "ms");
 }
 
+/// Vertically centers all children elements (with flexbox)
+/// @access public
+/// @example scss - Usage
+/// .foo {
+///   @include center-children;
+/// }
+@mixin center-children {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/// center a block element horizontally
+/// @access public
+/// @example scss - Usage
+/// .foo {
+///   @include push--auto;
+/// }
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+  $padding: unquote(($y / $x) * 100 + "%");
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+/// sets all prefixs for placeholders
+/// @access public
+/// @example scss - Usage
+/// input,
+/// textarea {
+///   @include input-placeholder {
+///     color: $grey;
+///   }
+/// }
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+@mixin hardware($backface: true, $perspective: 1000px) {
+  @if $backface {
+    backface-visibility: hidden;
+  }
+  perspective: $perspective;
+}
+
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+    only screen and (-moz-min-device-pixel-ratio: 1.5),
+    only screen and (-o-min-device-pixel-ratio: 3 / 2),
+    only screen and (min-device-pixel-ratio: 1.5),
+    only screen and (min-resolution: 1.5dppx) {
+    @content;
+  }
+}
+
+@mixin antialias {
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin unselectable {
+  -webkit-touch-callout: none;
+  user-select: none;
+}
 
 /// Clearfix extend
 /// @access public
@@ -244,11 +372,9 @@ $base-font-size: 10px !default;
 ///     @extend %clearfix;
 ///   }
 %clearfix {
-  *zoom: 1;
-
   &:before,
   &:after {
-    content: ' ';
+    content: " ";
     display: table;
   }
 
@@ -256,7 +382,6 @@ $base-font-size: 10px !default;
     clear: both;
   }
 }
-
 
 /// Adds a thin black line above the element, and a thin gray line below the element, creating an inlay effect.
 /// @access public
@@ -269,9 +394,9 @@ $base-font-size: 10px !default;
 ///     box-shadow: rgba(255, 255, 255, 0.5) 0 1px 0, inset rgba(0, 0, 0, 0.75) 0 1px 0;
 ///   }
 @mixin outline {
-  box-shadow: rgba(255, 255, 255, 0.5) 0 1px 0, inset rgba(0, 0, 0, 0.75) 0 1px 0;
+  box-shadow: rgba(255, 255, 255, 0.5) 0 1px 0,
+    inset rgba(0, 0, 0, 0.75) 0 1px 0;
 }
-
 
 /// Given the location of a webfont, will generate a font-face declaration with multiple file formats.
 /// @access public
@@ -286,15 +411,14 @@ $base-font-size: 10px !default;
     font-family: quote($font-name);
     font-style: $style;
     font-weight: $weight;
-    src: url($file-name + '.eot');
-    src: url($file-name + '.eot?#iefix') format('embedded-opentype'),
-    url($file-name + '.woff2') format('woff2'),
-    url($file-name + '.woff') format('woff'),
-    url($file-name + '.ttf') format('truetype'),
-    url($file-name + '.svg##{$font-name}') format('svg');
+    src: url($file-name+".eot");
+    src: url($file-name+".eot?#iefix") format("embedded-opentype"),
+      url($file-name+".woff2") format("woff2"),
+      url($file-name+".woff") format("woff"),
+      url($file-name+".ttf") format("truetype"),
+      url($file-name+".svg##{$font-name}") format("svg");
   }
 }
-
 
 /// Given a font size in pixels, reproduces that font size in rems.
 /// @access public
@@ -317,7 +441,6 @@ $base-font-size: 10px !default;
   font-size: ($size / $base-font-size) * 1rem;
 }
 
-
 /// Forces browsers to use hardware acceleration for transforms
 /// @access public
 /// @example scss - Usage
@@ -331,9 +454,8 @@ $base-font-size: 10px !default;
 ///     transform: translate3d(0, 0, 0);
 ///   }
 @mixin ha {
-  @include prefix(transform, translate3d(0, 0, 0), 'webkit''ms');
+  @include prefix(transform, translate3d(0, 0, 0), "webkit" "ms");
 }
-
 
 /// Retina image media query helper; given an image path with a 2x-sized version of an image, will load that image as a background-image on high-resolution devices.
 /// @access public
@@ -345,16 +467,14 @@ $base-font-size: 10px !default;
 ///     @include image-2x('../images/image.png', 100%, auto);
 ///   }
 @mixin image-2x($image, $width, $height) {
-
   @media (-webkit-min-device-pixel-ratio: 1.3),
-  (min-resolution: 124dpi),
-  (min-resolution: 1.3dppx) {
+    (min-resolution: 124dpi),
+    (min-resolution: 1.3dppx) {
     /* on retina, use image that's scaled by 2 */
     background-image: url($image);
     background-size: $width $height;
   }
 }
-
 
 /// Generates line-height values in both pixels and rems.
 /// @access public
@@ -370,9 +490,10 @@ $base-font-size: 10px !default;
 ///   }
 @mixin line-height($height-value: 12) {
   line-height: $height-value * 1px; //fallback for old browsers
-  line-height: (1 / ($base-font-size / ($base-font-size * 0 + 1)) * $height-value * 1rem);
+  line-height: (
+    1 / ($base-font-size / ($base-font-size * 0 + 1)) * $height-value * 1rem
+  );
 }
-
 
 /// Media query helper for declaring media queries by width, and, optionally, ratio.
 /// @access public
@@ -386,21 +507,17 @@ $base-font-size: 10px !default;
 ///   }
 @mixin mquery($width, $ratio: false) {
   @if $ratio {
-
     @media only screen and (max-width: $width) and (min--moz-device-pixel-ratio: $ratio),
-    only screen and (max-width: $width) and (-webkit-min-device-pixel-ratio: $ratio),
-    only screen and (max-width: $width) and (min-device-pixel-ratio: $ratio) {
+      only screen and (max-width: $width) and (-webkit-min-device-pixel-ratio: $ratio),
+      only screen and (max-width: $width) and (min-device-pixel-ratio: $ratio) {
       @content;
     }
-  }
-
-  @else {
+  } @else {
     @media only screen and (max-width: $width) {
       @content;
     }
   }
 }
-
 
 /// Media query helper for declaring media queries by device pixel ratio.
 /// @access public
@@ -412,15 +529,13 @@ $base-font-size: 10px !default;
 ///     }
 ///   }
 @mixin mquery-r($ratio) {
-
   @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
-  only screen and (min--moz-device-pixel-ratio: $ratio),
-  only screen and (-o-min-device-pixel-ratio: $ratio),
-  only screen and (min-device-pixel-ratio: $ratio) {
+    only screen and (min--moz-device-pixel-ratio: $ratio),
+    only screen and (-o-min-device-pixel-ratio: $ratio),
+    only screen and (min-device-pixel-ratio: $ratio) {
     @content;
   }
 }
-
 
 /// Given an opacity value, generates that value as well as a way to display that opacity value in Internet Explorer 8 and 9.
 /// @access public
@@ -464,7 +579,6 @@ $base-font-size: 10px !default;
   left: $left;
 }
 
-
 /// Sizing helper
 /// @access public
 /// @param {Length} $width - Width
@@ -483,7 +597,6 @@ $base-font-size: 10px !default;
   height: $height;
 }
 
-
 /// Embossing text shadow
 /// @access public
 /// @param {Float} $value - Opacity value
@@ -499,7 +612,6 @@ $base-font-size: 10px !default;
   text-shadow: rgba(255, 255, 255, $value) 0 1px 0;
 }
 
-
 /// Automatically prefix any transform
 /// @access public
 /// @param {String} $transformation - The transform to apply
@@ -514,9 +626,8 @@ $base-font-size: 10px !default;
 ///     transform: translateX(10px);
 ///   }
 @mixin transform($transformation) {
-  @include prefix(transform, $transformation, 'webkit''ms');
+  @include prefix(transform, $transformation, "webkit" "ms");
 }
-
 
 /// Transition helper
 /// @param {Time} $time [1s] - Duration
@@ -531,9 +642,8 @@ $base-font-size: 10px !default;
 ///     transition: all 0.3s ease-in;
 ///   }
 @mixin transition($time: 1s, $timing-function: ease-in-out) {
-  @include prefix(transition, all $time $timing-function, 'webkit');
+  @include prefix(transition, all $time $timing-function, "webkit");
 }
-
 
 /// Generates a grow-then-shrink (or shrink-then-grow) animation using transform(scale).
 /// @access public
@@ -561,11 +671,10 @@ $base-font-size: 10px !default;
 ///      transform: scale(0.5);
 ///    }
 ///  }
-@mixin scale($scale-change:1.1, $animation-properties: 1s ease-in-out) {
-  $alias: 'scale-'+ str-replace($scale-change + '', '.', '-');
+@mixin scale($scale-change: 1.1, $animation-properties: 1s ease-in-out) {
+  $alias: "scale-" + str-replace($scale-change + "", ".", "-");
 
   @include keyframes($alias) {
-
     0%,
     100% {
       @include transform(scale(1));
@@ -576,9 +685,8 @@ $base-font-size: 10px !default;
     }
   }
 
-  @include prefix(animation, $alias $animation-properties, 'webkit');
+  @include prefix(animation, $alias $animation-properties, "webkit");
 }
-
 
 /// Given two opacity values, animates an element between those opacity values.
 /// @access public
@@ -606,7 +714,8 @@ $base-font-size: 10px !default;
 ///     }
 ///   }
 @mixin fade($fade-from: 0, $fade-to: 1, $animation-properties: 1s ease) {
-  $alias: fade- + str-replace($fade-from + '', '.', '-') + '-'+ str-replace($fade-to + '', '.', '-');
+  $alias: fade- + str-replace($fade-from + "", ".", "-") + "-" +
+    str-replace($fade-to + "", ".", "-");
 
   @include keyframes($alias) {
     from {
@@ -618,9 +727,8 @@ $base-font-size: 10px !default;
     }
   }
 
-  @include prefix(animation, $alias $animation-properties, 'webkit');
+  @include prefix(animation, $alias $animation-properties, "webkit");
 }
-
 
 /// Slide-in-from creates and calls an animation that slides an element on a given axis for a given amount of space. The offset is measured in the distance from the location the element would naturally fall in, were transforms not applied to it.
 /// @access public
@@ -654,8 +762,16 @@ $base-font-size: 10px !default;
 ///       opacity: 1;
 ///     }
 ///   }
-@mixin slide-in-from($slide-axis: x, $slide-offset: -100px, $animation-properties: 3s ease-out) {
-  $slide-start: if($slide-axis==x, translateX($slide-offset), translateY($slide-offset));
+@mixin slide-in-from(
+  $slide-axis: x,
+  $slide-offset: -100px,
+  $animation-properties: 3s ease-out
+) {
+  $slide-start: if(
+    $slide-axis==x,
+    translateX($slide-offset),
+    translateY($slide-offset)
+  );
   $slide-end: if($slide-axis==x, translateX(0), translateY(0));
 
   @include keyframes(slide-in-#{$slide-axis}-#{$slide-offset}) {
@@ -673,7 +789,11 @@ $base-font-size: 10px !default;
     }
   }
 
-  @include prefix(animation, slide-in-#{$slide-axis}-#{$slide-offset} $animation-properties, 'webkit');
+  @include prefix(
+    animation,
+    slide-in-#{$slide-axis}-#{$slide-offset} $animation-properties,
+    "webkit"
+  );
 }
 
 @mixin with-prefix($prefix) {
@@ -682,9 +802,7 @@ $base-font-size: 10px !default;
       @if $debug-browser-support {
         @if $prefix {
           /* content for #{$prefix} because #{$current-prefix or $prefix-context} is already in scope. */
-        }
-
-        @else {
+        } @else {
           /* unprefixed content. #{$current-prefix or $prefix-context} is already in scope. */
         }
       }
@@ -696,9 +814,7 @@ $base-font-size: 10px !default;
       @content;
       $prefix-context: $old-prefix-context !global;
       $current-prefix: $old-prefix !global;
-    }
-
-    @else if $prefix==null {
+    } @else if $prefix==null {
       $old-prefix-context: $prefix-context;
       $prefix-context: $prefix-context or $current-prefix !global;
       $current-prefix: null !global;
@@ -710,14 +826,10 @@ $base-font-size: 10px !default;
       @content;
       $current-prefix: $prefix-context !global;
       $prefix-context: $old-prefix-context !global;
-    }
-
-    @else if $debug-browser-support {
+    } @else if $debug-browser-support {
       /* Omitting content for #{$prefix} because #{$current-prefix} is already in scope. */
     }
-  }
-
-  @else {
+  } @else {
     @if $debug-browser-support and $prefix {
       /* Creating new #{$prefix} context. */
     }
@@ -730,7 +842,6 @@ $base-font-size: 10px !default;
   }
 }
 
-
 /// Stretch element height to specified top and bottom position
 /// @access public
 /// @param {Number} $offset-top [0] - Top start/stop stretch position.
@@ -739,17 +850,22 @@ $base-font-size: 10px !default;
 ///   .foo {
 ///     @include stretch-y(-10px, 10px);
 ///   }
-@mixin stretch-y($offset-top:0, $offset-bottom:0) {
+@mixin stretch-y($offset-top: 0, $offset-bottom: 0) {
   @include stretch($offset-top, false, $offset-bottom, false);
 }
 
 /// stretch element width to specified left and right position
-@mixin stretch-x($offset-left:0, $offset-right:0) {
+@mixin stretch-x($offset-left: 0, $offset-right: 0) {
   @include stretch(false, $offset-right, false, $offset-left);
 }
 
 /// shorthand to stretch element height and width
-@mixin stretch($offset-top:0, $offset-right:0, $offset-bottom:0, $offset-left:0) {
+@mixin stretch(
+  $offset-top: 0,
+  $offset-right: 0,
+  $offset-bottom: 0,
+  $offset-left: 0
+) {
   position: absolute;
 
   @if $offset-top {
@@ -779,7 +895,13 @@ $base-font-size: 10px !default;
 ///     a {
 ///       @include link-colors(#00c, #0cc, #c0c, #ccc, #cc0);
 ///     }
-@mixin link-colors($normal, $hover: false, $active: false, $visited: false, $focus: false) {
+@mixin link-colors(
+  $normal,
+  $hover: false,
+  $active: false,
+  $visited: false,
+  $focus: false
+) {
   color: $normal;
 
   @if $visited {
@@ -813,7 +935,6 @@ $base-font-size: 10px !default;
 /// @param {Number, String, List} $values - The value or list of values for the property.
 /// @param {Boolean} $use-px-fallback - [ true | false ]
 @mixin rem($property, $values, $use-px-fallback: $rem-with-px-fallback) {
-
   // get converted values.
   $values: list-convert-rems($values);
   $px-values: map-get($values, px);
@@ -908,10 +1029,12 @@ $mq-responsive: true !default;
 ///
 /// @type Map
 /// @link https://github.com/sass-mq/sass-mq#seeing-the-currently-active-breakpoint Full documentation and examples
-$mq-breakpoints: (mobile: 320px,
+$mq-breakpoints: (
+  mobile: 320px,
   tablet: 740px,
   desktop: 980px,
-  wide: 1300px) !default;
+  wide: 1300px
+) !default;
 
 /// Static breakpoint (for fixed-width layouts)
 ///
@@ -976,9 +1099,7 @@ $mq-media-type: all !default;
   @if unitless($px) {
     @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels.";
     @return mq-px2em($px * 1px, $base-font-size);
-  }
-
-  @else if unit($px)==em {
+  } @else if unit($px) ==em {
     @return $px;
   }
 
@@ -999,9 +1120,7 @@ $mq-media-type: all !default;
 @function mq-get-breakpoint-width($name, $breakpoints: $mq-breakpoints) {
   @if map-has-key($breakpoints, $name) {
     @return map-get($breakpoints, $name);
-  }
-
-  @else {
+  } @else {
     @warn "Breakpoint #{$name} wasn't found in $breakpoints.";
   }
 }
@@ -1053,48 +1172,55 @@ $mq-media-type: all !default;
 ///      color: hotpink;
 ///    }
 ///  }
-@mixin mq($from: false,
+@mixin mq(
+  $from: false,
   $until: false,
   $and: false,
   $media-type: $mq-media-type,
   $breakpoints: $mq-breakpoints,
   $responsive: $mq-responsive,
-  $static-breakpoint: $mq-static-breakpoint) {
+  $static-breakpoint: $mq-static-breakpoint
+) {
   $min-width: 0;
   $max-width: 0;
-  $media-query: '';
+  $media-query: "";
 
   // From: this breakpoint (inclusive)
   @if $from {
-    @if type-of($from)==number {
+    @if type-of($from) ==number {
       $min-width: mq-px2em($from);
-    }
-
-    @else {
+    } @else {
       $min-width: mq-px2em(mq-get-breakpoint-width($from, $breakpoints));
     }
   }
 
   // Until: that breakpoint (exclusive)
   @if $until {
-    @if type-of($until)==number {
+    @if type-of($until) ==number {
       $max-width: mq-px2em($until);
-    }
-
-    @else {
-      $max-width: mq-px2em(mq-get-breakpoint-width($until, $breakpoints)) - .01em;
+    } @else {
+      $max-width: mq-px2em(mq-get-breakpoint-width($until, $breakpoints)) -
+        0.01em;
     }
   }
 
   // Responsive support is disabled, rasterize the output outside @media blocks
   // The browser will rely on the cascade itself.
   @if $responsive==false {
-    $static-breakpoint-width: mq-get-breakpoint-width($static-breakpoint, $breakpoints);
+    $static-breakpoint-width: mq-get-breakpoint-width(
+      $static-breakpoint,
+      $breakpoints
+    );
     $target-width: mq-px2em($static-breakpoint-width);
 
     // Output only rules that start at or span our target width
-    @if ($and==false and $min-width <=$target-width and ($until==false or $max-width >=$target-width) and $media-type !='print'
-
+    @if (
+      $and==false and
+        $min-width
+        <=$target-width and
+        ($until==false or $max-width >=$target-width) and
+        $media-type !=
+        "print"
     ) {
       @content;
     }
@@ -1103,20 +1229,20 @@ $mq-media-type: all !default;
   // Responsive support is enabled, output rules inside @media queries
   @else {
     @if $min-width !=0 {
-      $media-query: '#{$media-query} and (min-width: #{$min-width})';
+      $media-query: "#{$media-query} and (min-width: #{$min-width})";
     }
 
     @if $max-width !=0 {
-      $media-query: '#{$media-query} and (max-width: #{$max-width})';
+      $media-query: "#{$media-query} and (max-width: #{$max-width})";
     }
 
     @if $and {
-      $media-query: '#{$media-query} and #{$and}';
+      $media-query: "#{$media-query} and #{$and}";
     }
 
     // Remove unnecessary media query prefix 'all and '
-    @if ($media-type=='all'and $media-query !='') {
-      $media-type: '';
+    @if ($media-type== "all" and $media-query != "") {
+      $media-type: "";
       $media-query: str-slice(unquote($media-query), 6);
     }
 
@@ -1137,19 +1263,15 @@ $mq-media-type: all !default;
   $equal: ();
   $large: ();
 
-  @if length($list)>1 {
+  @if length($list) >1 {
     $seed: nth($list, ceil(length($list) / 2));
 
     @each $item in $list {
       @if ($item==$seed) {
         $equal: append($equal, $item);
-      }
-
-      @else if ($item < $seed) {
+      } @else if ($item < $seed) {
         $less: append($less, $item);
-      }
-
-      @else if ($item > $seed) {
+      } @else if ($item > $seed) {
         $large: append($large, $item);
       }
     }
@@ -1175,7 +1297,12 @@ $mq-media-type: all !default;
   @each $value in $map-values-sorted {
     $index: index($map-values, $value);
     $key: nth($map-keys, $index);
-    $map-sorted: map-merge($map-sorted, ($key: $value));
+    $map-sorted: map-merge(
+      $map-sorted,
+      (
+        $key: $value
+      )
+    );
 
     // Unset the value in $map-values to prevent the loop
     // from finding the same index twice
@@ -1196,7 +1323,9 @@ $mq-media-type: all !default;
 ///  @include mq-add-breakpoint(tvscreen, 1920px);
 ///  @include mq(tvscreen) {}
 @mixin mq-add-breakpoint($name, $width) {
-  $new-breakpoint: ($name: $width);
+  $new-breakpoint: (
+    $name: $width
+  );
   $mq-breakpoints: map-merge($mq-breakpoints, $new-breakpoint) !global;
   $mq-breakpoints: _mq-map-sort-by-value($mq-breakpoints) !global;
 }
@@ -1216,12 +1345,15 @@ $mq-media-type: all !default;
 ///
 ///  // Show breakpoints using custom settings
 ///  @include mq-show-breakpoints((L, XL), (S: 300px, L: 800px, XL: 1200px));
-@mixin mq-show-breakpoints($show-breakpoints: $mq-show-breakpoints, $breakpoints: $mq-breakpoints) {
+@mixin mq-show-breakpoints(
+  $show-breakpoints: $mq-show-breakpoints,
+  $breakpoints: $mq-breakpoints
+) {
   body:before {
-    background-color: #FCF8E3;
-    border-bottom: 1px solid #FBEED5;
-    border-left: 1px solid #FBEED5;
-    color: #C09853;
+    background-color: #fcf8e3;
+    border-bottom: 1px solid #fbeed5;
+    border-left: 1px solid #fbeed5;
+    color: #c09853;
     font: small-caption;
     padding: 3px 6px;
     pointer-events: none;
@@ -1241,6 +1373,6 @@ $mq-media-type: all !default;
   }
 }
 
-@if length($mq-show-breakpoints)>0 {
+@if length($mq-show-breakpoints) >0 {
   @include mq-show-breakpoints;
 }

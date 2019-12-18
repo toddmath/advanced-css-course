@@ -9,8 +9,8 @@
 html {
   // Initializes our 1rem = $base-font-size font-size system
   font-size: $base-font-size;
-  @include reset-html5;
-  @include reset-focus;
+  // @include reset-html5;
+  // @include reset-focus;
 }
 
 body {
