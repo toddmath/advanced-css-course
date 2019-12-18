@@ -39,7 +39,9 @@
       text-decoration: none;
       text-transform: uppercase;
       display: inline-block;
-      transition: all 0.2s;
+      // transition: all 0.2s;
+      @include transition(0.2s, $footer-link-benz);
+      @include hardware(true, 100000px);
     }
 
     &:hover,

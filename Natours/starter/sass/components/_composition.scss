@@ -1,35 +1,39 @@
 .composition {
   position: relative;
+  @include hardware(true, 100000px);
 
   &__photo {
     @include size(55%, unset);
-    box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
     border-radius: 0.2rem;
     @include ha;
-    @include transition(200ms, cubic-bezier(0.39, 0.575, 0.565, 1));
     z-index: 10;
     outline-offset: 2rem;
+    @include transition(0.42s, $photo-benz);
 
     &--p1 {
       @include position(absolute, $top: -2rem, $left: 0);
       z-index: 11;
+      perspective: 1000px;
     }
 
     &--p2 {
       @include position(absolute, $top: 2rem, $right: 0);
       z-index: 12;
+      perspective: 1200px;
     }
 
     &--p3 {
       @include position(absolute, $top: 10rem, $left: 20%);
       z-index: 13;
+      perspective: 1600px;
     }
 
     &:hover {
       outline: 1.5rem solid $color-primary;
       // @include transform(scale(1.05));
-      transform: scale(1.06) translateY(-.5rem);
-      box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+      transform: scale(1.06) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5);
       z-index: 20;
     }
   }

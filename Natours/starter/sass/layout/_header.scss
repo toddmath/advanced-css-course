@@ -63,7 +63,7 @@
     ),
     url("../img/hero.jpg");
   background-size: cover;
-  background-position: top;
+  background-position: bottom;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(80vh - 2 * 3rem), 0 100%);
   clip-path: polygon(
     0 0,
@@ -72,7 +72,7 @@
     0 100%
   ); // 80vh - 60px
   position: relative;
-  @include ha;
+  @include hardware;
 
   @include media(">=wide") {
     @include size(unset, calc(100vh - 2 * 3.4rem));
@@ -148,5 +148,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    @include hardware;
   }
 }

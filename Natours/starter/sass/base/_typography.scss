@@ -105,7 +105,7 @@ body {
   color: transparent;
   @include transition(0.2s, ease-out);
   letter-spacing: 2px;
-  @include ha;
+  @include hardware(true, 100000px);
 
   &:hover {
     @include transform(skew(15deg, 2deg) scale(1.1));
