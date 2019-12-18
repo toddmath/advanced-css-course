@@ -32,11 +32,7 @@ body {
   }
 }
 
-*,
-*:before,
-*:after {
-  -webkit-font-smoothing: inherit;
-}
+@include pseudoAnti;
 
 .heading-primary {
   color: $color-white;
@@ -112,7 +108,7 @@ body {
   @include ha;
 
   &:hover {
-    transform: skew(15deg, 2deg) scale(1.1);
+    @include transform(skew(15deg, 2deg) scale(1.1));
     text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
   }
 }

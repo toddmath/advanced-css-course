@@ -15,6 +15,11 @@
     box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
     text-align: center;
     cursor: pointer;
+
+    &:active,
+    &:focus {
+      @include scale(1.2, 0.8s $scale-benz);
+    }
   }
 
   &__background {
@@ -54,6 +59,7 @@
   &__item {
     margin: 1.4rem;
     @include hardware(true, 10000px);
+    @include transform(translate3d(0, 0, 0));
   }
 
   &__link {

@@ -222,7 +222,7 @@ $base-font-size: 10px !default;
   position: absolute;
   top: 50%;
   left: 50%;
-  @include prefix(transform, translate(-50%, -50%), "webkit" "ms");
+  @include prefix(transform, translate(-50%, -50%), "webkit" "moz");
 }
 
 /// Vertically centers block elements with known height.
@@ -263,7 +263,7 @@ $base-font-size: 10px !default;
 @mixin center-h--unk {
   position: relative;
   top: 50%;
-  @include prefix(transform, translateY(-50%), "webkit" "ms");
+  @include prefix(transform, translateY(-50%), "webkit" "moz");
 }
 
 /// Vertically centers all children elements (with flexbox)
@@ -320,7 +320,7 @@ $base-font-size: 10px !default;
 ///   }
 /// }
 @mixin input-placeholder {
-  &.placeholder {
+  &:placeholder {
     @content;
   }
   &:-moz-placeholder {
@@ -358,6 +358,15 @@ $base-font-size: 10px !default;
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin pseudoAnti {
+  *,
+  *::before,
+  *::after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 @mixin unselectable {
@@ -454,7 +463,7 @@ $base-font-size: 10px !default;
 ///     transform: translate3d(0, 0, 0);
 ///   }
 @mixin ha {
-  @include prefix(transform, translate3d(0, 0, 0), "webkit" "ms");
+  @include prefix(transform, translate3d(0, 0, 0), "webkit" "moz");
 }
 
 /// Retina image media query helper; given an image path with a 2x-sized version of an image, will load that image as a background-image on high-resolution devices.
@@ -622,11 +631,10 @@ $base-font-size: 10px !default;
 /// @example css - Result
 ///   .foo {
 ///     -webkit-transform: translateX(10px);
-///     -ms-transform: translateX(10px);
 ///     transform: translateX(10px);
 ///   }
 @mixin transform($transformation) {
-  @include prefix(transform, $transformation, "webkit" "ms");
+  @include prefix(transform, $transformation, "webkit" "moz");
 }
 
 /// Transition helper
@@ -642,7 +650,7 @@ $base-font-size: 10px !default;
 ///     transition: all 0.3s ease-in;
 ///   }
 @mixin transition($time: 1s, $timing-function: ease-in-out) {
-  @include prefix(transition, all $time $timing-function, "webkit");
+  @include prefix(transition, all $time $timing-function, "webkit" "moz");
 }
 
 /// Generates a grow-then-shrink (or shrink-then-grow) animation using transform(scale).
@@ -685,7 +693,7 @@ $base-font-size: 10px !default;
     }
   }
 
-  @include prefix(animation, $alias $animation-properties, "webkit");
+  @include prefix(animation, $alias $animation-properties, "webkit" "moz");
 }
 
 /// Given two opacity values, animates an element between those opacity values.
@@ -727,7 +735,7 @@ $base-font-size: 10px !default;
     }
   }
 
-  @include prefix(animation, $alias $animation-properties, "webkit");
+  @include prefix(animation, $alias $animation-properties, "webkit" "moz");
 }
 
 /// Slide-in-from creates and calls an animation that slides an element on a given axis for a given amount of space. The offset is measured in the distance from the location the element would naturally fall in, were transforms not applied to it.
@@ -792,7 +800,7 @@ $base-font-size: 10px !default;
   @include prefix(
     animation,
     slide-in-#{$slide-axis}-#{$slide-offset} $animation-properties,
-    "webkit"
+    "webkit" "moz"
   );
 }
 

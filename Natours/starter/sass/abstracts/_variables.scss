@@ -33,6 +33,10 @@ $grid-width: 114rem;
 $gutter-vertical: 8rem;
 $gutter-horizontal: 6rem;
 
+// animations, transitions, cubicbenz
+$navi-benz: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+$scale-benz: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
 // Breakpoints
 $mobile: 420px;
 $tablet: 740px;

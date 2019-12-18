@@ -16,7 +16,7 @@
 <div class="navigation">
   <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
 
-  <label for="navi-toggle" class="navigation__button">
+  <label for="navi-toggle" class="navigation__button" tabindex="0">
     <span class="navigation__icon">&nbsp;</span>
   </label>
 
@@ -24,11 +24,11 @@
 
   <nav class="navigation__nav">
     <ul class="navigation__list">
-      <li class="navigation__item"><a href="#" class="navigation__link">About Natours</a></li>
-      <li class="navigation__item"><a href="#" class="navigation__link">Your benefits</a></li>
-      <li class="navigation__item"><a href="#" class="navigation__link">Popular tours</a></li>
-      <li class="navigation__item"><a href="#" class="navigation__link">Stories</a></li>
-      <li class="navigation__item"><a href="#" class="navigation__link">Book now</a></li>
+      <li class="navigation__item"><a href="#section-about" class="navigation__link">About Natours</a></li>
+      <li class="navigation__item"><a href="#section-features" class="navigation__link">Your benefits</a></li>
+      <li class="navigation__item"><a href="#section-tours" class="navigation__link">Popular tours</a></li>
+      <li class="navigation__item"><a href="#section-stories" class="navigation__link">Stories</a></li>
+      <li class="navigation__item"><a href="#section-book" class="navigation__link">Book now</a></li>
     </ul>
   </nav>
 </div>
@@ -44,12 +44,12 @@
         <span class="heading-primary--main">Outdoors</span><span class="heading-primary--sub">is where life
           happens</span>
       </h1>
-      <a href="#" class="btn btn--white btn--animated btn--heading">Discover our tours</a>
+      <a href="#section-tours" class="btn btn--white btn--animated btn--heading">Discover our tours</a>
     </div>
   </header>
 
   <main>
-    <section class="section-about">
+    <section class="section-about" id="section-about">
       <div class="u-center-text u-margin-bottom-big">
         <h2 class="heading-secondary">
           Exciting tours for adventurous people
@@ -74,7 +74,7 @@
             Rorschach would say you have a hard time relating to others. I like seafood.
           </p>
 
-          <a href="#" class="btn-text">Learn more &rarr;</a>
+          <a href="#section-features" class="btn-text">Learn more &rarr;</a>
         </div>
         <div class="col-1-of-2">
           <div class="composition">
@@ -86,7 +86,7 @@
       </div>
     </section>
 
-    <section class="section-features">
+    <section class="section-features" id="section-features">
 
       <div class="section-features--row row">
         <div class="u-flex-row">
@@ -146,7 +146,7 @@
       </div>
     </section>
 
-    <section class="section-tours">
+    <section class="section-tours" id="section-tours">
       <div class="u-center-text u-margin-bottom-big">
         <h2 class="heading-secondary">
           Most popular tours
@@ -179,7 +179,7 @@
                   <p class="card__price-only">Only</p>
                   <p class="card__price-value">$297</p>
                 </div>
-                <a href="#" class="btn btn--white">Book now!</a>
+                <a href="#popup" class="btn btn--white">Book now!</a>
               </div>
             </div>
           </div>
@@ -210,7 +210,7 @@
                   <p class="card__price-only">Only</p>
                   <p class="card__price-value">$497</p>
                 </div>
-                <a href="#" class="btn btn--white">Book now!</a>
+                <a href="#popup" class="btn btn--white">Book now!</a>
               </div>
             </div>
           </div>
@@ -241,7 +241,7 @@
                   <p class="card__price-only">Only</p>
                   <p class="card__price-value">$897</p>
                 </div>
-                <a href="#" class="btn btn--white">Book now!</a>
+                <a href="#popup" class="btn btn--white">Book now!</a>
               </div>
             </div>
           </div>
@@ -249,12 +249,12 @@
       </div>
 
       <div class="u-center-text u-margin-top-huge">
-        <a href="#" class="btn btn--green">Discover all tours</a>
+        <a href="#section-tours" class="btn btn--green">Discover all tours</a>
       </div>
 
     </section>
 
-    <section class="section-stories">
+    <section class="section-stories" id="section-stories">
       <div class="bg-video">
         <video class="bg-video__content" autoplay muted loop preload="auto">
           <source src="img/video.mp4" type="video/mp4">
@@ -303,11 +303,11 @@
       </div>
 
       <div class="u-center-text u-margin-top-huge">
-        <a href="#" class="btn-text">Read all stories &rarr;</a>
+        <a href="#section-stories" class="btn-text">Read all stories &rarr;</a>
       </div>
     </section>
 
-    <section class="section-book">
+    <section class="section-book" id="section-book">
       <div class="row">
         <div class="book">
           <div class="book__form">
@@ -387,13 +387,14 @@
     </div>
   </footer>
 
-  <div class="popup">
+  <div class="popup" id="popup">
     <div class="popup__content">
       <div class="popup__left">
         <img src="img/nat-8.jpg" alt="Tour Photo" class="popup__img">
         <img src="img/nat-9.jpg" alt="Tour Photo" class="popup__img">
       </div>
       <div class="popup__right">
+        <a href="#section-tours" class="popup__close">&times;</a>
         <h2 class="heading-secondary u-margin-bottom-small">Start booking now</h2>
         <h3 class="heading-tertiary u-margin-bottom-medium">Important &ndash; Please read these terms before booking
         </h3>
@@ -408,7 +409,7 @@
           most popular
           gun in American crime. Like they're actually proud of that shit.</p>
         <div class="u-center-children">
-          <a href="#" class="btn btn--green">Book now</a>
+          <a href="#section-book" class="btn btn--green">Book now</a>
         </div>
       </div>
     </div>
