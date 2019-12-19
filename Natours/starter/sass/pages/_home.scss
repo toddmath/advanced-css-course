@@ -1,24 +1,17 @@
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  @include box-sizing(border-box);
-}
+// html {
+// Initializes our 1rem = $base-font-size font-size system
 
-html {
-  // Initializes our 1rem = $base-font-size font-size system
-  font-size: $base-font-size;
-  // @include reset-html5;
-  // @include reset-focus;
-}
+// font-size: $base-font-size;
 
-body {
-  @include box-sizing(border-box);
-}
+// @include reset-html5;
+// @include reset-focus;
+// }
+
+// body {
+//   @include box-sizing(border-box);
+// }
 
 .section-about {
-  // background-color: $color-grey-light-1;
   @include background-gradient(
     darken($color-white, 3),
     $color-grey-light-1,
@@ -103,41 +96,23 @@ body {
   }
 
   // &--row {
-  //   margin: auto !important;
-  //   display: flex !important;
-  //   flex-direction: row;
-  //   flex-wrap: wrap;
-  //   max-width: 1100px !important;
-  //   align-items: center;
-  //   justify-content: space-between;
+  //   height: 100% !important;
   // }
 
-  &--row {
-    height: 100% !important;
-  }
-
-  & .u-flex-row {
-    display: flex;
-    flex: 0 1;
-    width: 100%;
-    max-width: 1100px;
-    height: 100%;
-    margin: auto;
-    padding: 1rem;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    @include outline;
-
-    @include media("<=desktop") {
-      // flex-direction: column;
-      flex: 1 1;
-      flex-wrap: wrap;
-      flex-basis: calc(40vw - 0.5rem);
-      justify-content: space-around;
-    }
-  }
+  // & .u-flex-row {
+  //   display: flex;
+  //   flex: 1 0;
+  //   width: 100%;
+  //   max-width: 1100px;
+  //   height: 100%;
+  //   margin: auto;
+  //   padding: 1rem;
+  //   align-items: center;
+  //   justify-content: space-between;
+  //   flex-direction: row;
+  //   flex-wrap: nowrap;
+  //   @include outline;
+  // }
 }
 
 .section-tours {
@@ -172,7 +147,8 @@ body {
       transparent 50%
     ),
     url(../img/nat-10.jpg);
-  background-size: 100%;
+  background-size: cover;
+  background-position: right;
   @include size(unset, 50rem);
   border-radius: $border-radius;
   box-shadow: 0 1.5rem 4rem rgba($color-black, 0.25);

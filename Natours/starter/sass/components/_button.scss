@@ -16,10 +16,10 @@
     cursor: pointer;
     @include unselectable;
 
-    @include media(">phone", "<=tablet") {
-      padding: 1.6rem 3rem;
-      @include font-size(14);
-    }
+    // @include media(">phone", "<=tablet") {
+    //   padding: 1.6rem 3rem;
+    //   @include font-size(14);
+    // }
 
     // change for the <button> element
     border: none;

@@ -13,16 +13,7 @@
   height: 260px;
   border-radius: 0.25rem;
 
-  @include media("<=desktop") {
-    padding: 1.5rem;
-  }
-
   &__icon {
-    //     fill-opacity: 0.8;
-    // stroke-opacity: 0.8;
-    // color: $color-grey-dark;
-    // stroke: $color-grey-dark;
-    // fill: $color-grey-dark;
     @include font-size(60);
     @include size(6rem);
     @include background-gradient(

@@ -74,68 +74,32 @@
   position: relative;
   @include hardware;
 
-  @include media(">=wide") {
-    @include size(unset, calc(100vh - 2 * 3.4rem));
-    -webkit-clip-path: polygon(
-      0 0,
-      100% 0,
-      100% calc(80vh - 2 * 3.4rem),
-      0 100%
-    );
+  @include respond(tab-port) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 82vh, 0 100%);
     clip-path: polygon(
       0 0,
       100% 0,
-      100% calc(80vh - 2 * 3.4rem),
+      100% 82vh,
       0 100%
-    ); // 80vh - 68px
+    );
   }
 
-  @include media(">phone", "<=tablet") {
-    @include size(unset, calc(100vh - 2 * 2.4rem));
-    -webkit-clip-path: polygon(
-      0 0,
-      100% 0,
-      100% calc(80vh - 2 * 2.4rem),
-      0 100%
-    );
+  @include respond(phone) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
     clip-path: polygon(
       0 0,
       100% 0,
-      100% calc(80vh - 2 * 2.4rem),
-      0 100%
-    ); // 80vh - 48px
-  }
-
-  @include media("<=phone") {
-    @include size(unset, calc(100vh - 2 * 1.4rem));
-    -webkit-clip-path: polygon(
-      0 0,
-      100% 0,
-      100% calc(80vh - 2 * 1.4rem),
+      100% 85vh,
       0 100%
     );
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% calc(80vh - 2 * 1.4rem),
-      0 100%
-    ); // 80vh - 28px
   }
 
   &__logo-box {
     @include position(absolute, $top: 4rem, $left: 4rem);
-
-    @include media("<=tablet") {
-      @include position(absolute, $top: 3rem, $left: 3rem);
-    }
   }
 
   &__logo {
     @include size(unset, 3.5rem);
-
-    @include media("<=tablet") {
-      @include size(auto, 3rem);
-    }
   }
 
   &__text-box {

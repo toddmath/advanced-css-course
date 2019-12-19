@@ -15,21 +15,8 @@ body {
   font-weight: 400;
   @include line-height(17);
   color: $color-grey-dark;
-  padding: 3rem;
   @include background-size(100%);
   background-color: $color-white;
-
-  @include media(">=wide") {
-    padding: 3.4rem;
-  }
-
-  @include media(">phone", "<=tablet") {
-    padding: 2.4rem;
-  }
-
-  @include media("<=phone") {
-    padding: 1.4rem;
-  }
 }
 
 @include pseudoAnti;
@@ -42,7 +29,6 @@ body {
   text-align: center;
   @include size(auto, 100%);
   white-space: nowrap;
-  font-size: 0;
 
   &--main {
     @include line-height(64);
@@ -54,14 +40,10 @@ body {
     @include slide-in-from(x, -10rem, 1s ease-out);
     white-space: normal;
     text-align: center;
-    // @include ms-respond(font-size, 9);
-    // @include ms-respond(letter-spacing, 7);
 
-    @include media("<=tablet") {
-      @include size(100%, auto);
-      @include font-size(44);
-      letter-spacing: 2.5rem;
-      @include line-height(48);
+    @include respond(phone) {
+      letter-spacing: 1rem;
+      font-size: 5rem;
     }
   }
 
@@ -70,9 +52,6 @@ body {
     display: block;
     @include size(100%, 100%);
     @include font-size(22);
-    // @include ms-respond(font-size, 3);
-    // @include ms-respond(letter-spacing, 2);
-    // @include ms-respond(word-spacing, 1);
     font-weight: 700;
     letter-spacing: 1.75rem;
     word-spacing: -0.9rem;
@@ -80,17 +59,14 @@ body {
     white-space: normal;
     text-align: center;
 
-    @include media("<=tablet") {
-      @include font-size(16.2);
-      letter-spacing: 1.14rem;
-      @include line-height(20);
+    @include respond(phone) {
+      letter-spacing: .5rem;
     }
   }
 }
 
 .heading-secondary {
-  // @include font-size(35);
-  @include ms-respond(font-size, 6);
+  @include font-size(35);
   text-transform: uppercase;
   font-weight: 700;
   @include background-gradient(
@@ -105,24 +81,30 @@ body {
   color: transparent;
   @include transition(0.2s, ease-out);
   letter-spacing: 2px;
-  @include hardware(true, 100000px);
+  @include hardware;
 
   &:hover {
     @include transform(skew(15deg, 2deg) scale(1.1));
     text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
   }
+
+  @include respond(tab-port) {
+    font-size: 3rem;
+  }
+
+  @include respond(phone) {
+    font-size: 2.5rem;
+  }
 }
 
 .heading-tertiary {
-  // @include font-size(16);
-  @include ms-respond(font-size, 4);
+  @include font-size(16);
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .paragraph {
-  // @include font-size(16);
-  @include ms-respond(font-size, 3);
+  @include font-size(16);
 
   &:not(:last-child) {
     margin-bottom: 3rem;

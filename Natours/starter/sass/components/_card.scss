@@ -1,9 +1,9 @@
 .card {
   // FUNCTIONALITY
-  -webkit-perspective: 110rem;
-  -moz-perspective: 110rem;
-  perspective: 110rem;
-  @include ha;
+  // -webkit-perspective: 110rem;
+  // -moz-perspective: 110rem;
+  // perspective: 110rem;
+  @include hardware(false, 100rem);
   position: relative;
   width: 100%;
   height: 52rem;
@@ -11,13 +11,11 @@
   transform-style: preserve-3d;
 
   &__side {
-    -webkit-perspective: 110rem;
-    -moz-perspective: 110rem;
-    perspective: 110rem;
+    @include hardware(false, 100rem);
     perspective-origin: center;
     transform-style: preserve-3d;
     height: 52rem;
-    @include transition(0.8s, cubic-bezier(0.39, 0.575, 0.565, 1));
+    transition: 0.8s transform $card-benz;
     position: absolute;
     top: 0;
     left: 0;
@@ -64,11 +62,11 @@
   }
 
   &:hover &__side--front {
-    transform: rotateY(-180deg);
+    @include transform(rotateY(-180deg));
   }
 
   &:hover &__side--back {
-    transform: rotateY(0);
+    @include transform(rotateY(0deg));
   }
 
   // FRONT SIDE STYLES
@@ -109,22 +107,21 @@
   }
 
   &__heading {
-    font-size: 2.5rem;
+    @include font-size(25);
+    @include line-height(25);
     font-weight: 300;
     text-transform: uppercase;
     text-align: right;
     color: $color-white;
-    position: absolute;
-    top: 12rem;
-    right: 2rem;
     width: 70%;
+    @include position(absolute, 12rem, 2rem, unset, unset);
   }
 
   &__heading-span {
     padding: 1rem 1.5rem;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
-    line-height: 2;
+    @include line-height(50);
 
     &--1 {
       background-image: linear-gradient(
@@ -165,7 +162,7 @@
 
       li {
         text-align: center;
-        font-size: 1.5rem;
+        @include font-size(15);
         padding: 1rem;
 
         &:not(:last-child) {
