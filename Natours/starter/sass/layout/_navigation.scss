@@ -16,14 +16,19 @@
     text-align: center;
     cursor: pointer;
 
+    &:active,
+    &:focus {
+      @include scale(1.2, 0.8s $scale-benz);
+    }
+
     @include respond(tab-port) {
       @include position(fixed, 3.5rem, 3.5rem, unset, unset);
       @include size(4.5rem, 4.5rem);
     }
 
-    &:active,
-    &:focus {
-      @include scale(1.2, 0.8s $scale-benz);
+    @include respond(phone) {
+      @include position(fixed, 3.5rem, 3.5rem, unset, unset);
+      @include size(4.5rem, 4.5rem);
     }
   }
 
@@ -45,6 +50,11 @@
     @include respond(tab-port) {
       @include position(fixed, 4rem, 4rem, unset, unset);
       @include size(3.5rem, 3.5rem);
+    }
+
+    @include respond(phone) {
+      @include position(fixed, 4rem, 4rem, unset, unset);
+      @include size(3rem, 3rem);
     }
   }
 
@@ -126,6 +136,14 @@
   &__checkbox:checked ~ &__background {
     transform: scale(90);
     opacity: 1;
+
+    @include respond(tab-port) {
+      transform: scale(94);;
+    }
+
+    @include respond(phone) {
+      transform: scale(96);
+    }
   }
 
   &__checkbox:checked ~ &__nav {

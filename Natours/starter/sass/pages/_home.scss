@@ -19,6 +19,17 @@
   );
   padding: 25rem 0;
   margin-top: -20vh;
+
+  @include respond(tab-port) {
+    padding: 20rem 0;
+    margin-top: -12vh;
+  }
+
+  .row {
+    @include respond(tab-port) {
+      max-width: 60rem;
+    }
+  }
 }
 
 .section-features {
@@ -95,24 +106,9 @@
     @include transform(skewY(5.5deg));
   }
 
-  // &--row {
-  //   height: 100% !important;
-  // }
-
-  // & .u-flex-row {
-  //   display: flex;
-  //   flex: 1 0;
-  //   width: 100%;
-  //   max-width: 1100px;
-  //   height: 100%;
-  //   margin: auto;
-  //   padding: 1rem;
-  //   align-items: center;
-  //   justify-content: space-between;
-  //   flex-direction: row;
-  //   flex-wrap: nowrap;
-  //   @include outline;
-  // }
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
 }
 
 .section-tours {
@@ -123,11 +119,19 @@
   );
   padding: 25rem 0 15rem 0;
   margin-top: -10rem;
+
+  @include respond(tab-port) {
+    padding: 20rem 0 15rem 0;
+  }
 }
 
 .section-stories {
   position: relative;
   padding: 15rem 0;
+
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
 }
 
 .section-book {
@@ -137,6 +141,10 @@
     $color-primary-dark,
     vertical
   );
+
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
 }
 
 .book {

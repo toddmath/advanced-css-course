@@ -64,32 +64,44 @@
     url("../img/hero.jpg");
   background-size: cover;
   background-position: bottom;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(80vh - 2 * 3rem), 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(85vh - 2 * 3rem), 0 100%);
   clip-path: polygon(
     0 0,
     100% 0,
-    100% calc(80vh - 2 * 3rem),
+    100% calc(85vh - 2 * 3rem),
     0 100%
   ); // 80vh - 60px
   position: relative;
   @include hardware;
 
-  @include respond(tab-port) {
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 82vh, 0 100%);
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 82vh,
-      0 100%
-    );
-  }
-
-  @include respond(phone) {
+  @include respond(tab-land) {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
     clip-path: polygon(
       0 0,
       100% 0,
       100% 85vh,
+      0 100%
+    );
+  }
+
+  @include respond(tab-port) {
+    @include size(unset, 100vh);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 91vh, 0 100%);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 91vh,
+      0 100%
+    );
+  }
+
+  @include respond(phone) {
+    @include size(unset, 100vh);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 92vh, 0 100%);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 92vh,
       0 100%
     );
   }

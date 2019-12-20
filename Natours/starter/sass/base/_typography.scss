@@ -1,13 +1,25 @@
-@include font-face(Lato, "./fonts/lato-v16-latin-100", 100, normal);
-@include font-face(Lato, "./fonts/lato-v16-latin-100italic", 100, italic);
-@include font-face(Lato, "./fonts/lato-v16-latin-300", 300, normal);
-@include font-face(Lato, "./fonts/lato-v16-latin-300italic", 300, italic);
-@include font-face(Lato, "./fonts/lato-v16-latin-regular", 400, normal);
-@include font-face(Lato, "./fonts/lato-v16-latin-italic", 400, italic);
-@include font-face(Lato, "./fonts/lato-v16-latin-700", 700, normal);
-@include font-face(Lato, "./fonts/lato-v16-latin-700italic", 700, italic);
-@include font-face(Lato, "./fonts/lato-v16-latin-900", 900, normal);
-@include font-face(Lato, "./fonts/lato-v16-latin-900italic", 900, italic);
+// @include font-face(Lato, "./fonts/lato-v16-latin-100", 100, normal);
+// @include font-face(Lato, "./fonts/lato-v16-latin-100italic", 100, italic);
+// @include font-face(Lato, "./fonts/lato-v16-latin-300", 300, normal);
+// @include font-face(Lato, "./fonts/lato-v16-latin-300italic", 300, italic);
+// @include font-face(Lato, "./fonts/lato-v16-latin-regular", 400, normal);
+// @include font-face(Lato, "./fonts/lato-v16-latin-italic", 400, italic);
+// @include font-face(Lato, "./fonts/lato-v16-latin-700", 700, normal);
+// @include font-face(Lato, "./fonts/lato-v16-latin-700italic", 700, italic);
+// @include font-face(Lato, "./fonts/lato-v16-latin-900", 900, normal);
+// @include font-face(Lato, "./fonts/lato-v16-latin-900italic", 900, italic);
+
+@include scut-font-face(Lato, "./fonts/lato-v16-latin-100", 100, normal, eot svg ttf woff woff2);
+@include scut-font-face(Lato, "./fonts/lato-v16-latin-100italic", 100, italic, eot svg ttf woff woff2);
+@include scut-font-face(Lato, "./fonts/lato-v16-latin-300", 300, normal, eot svg ttf woff woff2);
+@include scut-font-face(Lato, "./fonts/lato-v16-latin-300italic", 300, italic, eot svg ttf woff woff2);
+@include scut-font-face(Lato, "./fonts/lato-v16-latin-700", 700, normal, eot svg ttf woff woff2);
+@include scut-font-face(Lato, "./fonts/lato-v16-latin-700italic", 700, italic, eot svg ttf woff woff2);
+@include scut-font-face(Lato, "./fonts/lato-v16-latin-900", 900, normal, eot svg ttf woff woff2);
+@include scut-font-face(Lato, "./fonts/lato-v16-latin-900italic", 900, italic, eot svg ttf woff woff2);
+@include scut-font-face(Lato, "./fonts/lato-v16-latin-regular", 400, normal, eot svg ttf woff woff2);
+@include scut-font-face(Lato, "./fonts/lato-v16-latin-italic", 400, italic, eot svg ttf woff woff2);
+
 
 body {
   @include antialias;
