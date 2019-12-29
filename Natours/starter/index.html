@@ -7,8 +7,9 @@
   <!-- <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet"> -->
   <link rel="stylesheet" href="css/icon-font.css">
   <!-- <link rel="stylesheet" href="css/open-iconic.min.css"> -->
-  <link rel="stylesheet" href="css/style.css">
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
   <!-- <script type="text/javascript" src="js/prefixfree.min.js"></script> -->
+  <link rel="stylesheet" href="sass/main.scss">
   <link rel="shortcut icon" type="image/png" href="img/favicon.png">
   <title>Natours | Exciting tours for adventurous people</title>
 </head>
@@ -16,11 +17,11 @@
 <div class="navigation">
   <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
 
-  <label for="navi-toggle" class="navigation__button" tabindex="0">
+  <label for="navi-toggle" class="navigation__button" id="navi-button" tabindex="0">
     <span class="navigation__icon">&nbsp;</span>
   </label>
 
-  <div class="navigation__background">&nbsp;</div>
+  <div class="navigation__background" id="navigation-background">&nbsp;</div>
 
   <nav class="navigation__nav">
     <ul class="navigation__list">
@@ -36,14 +37,14 @@
 <body>
   <header class="header">
     <div class="header__logo-box">
-      <img src="img/logo-white.png" alt="Logo" class="header__logo">
+      <img src="img/logo-white-opt.png" alt="Logo" class="header__logo lazyload">
     </div>
 
     <div class="header__text-box">
-      <h1 class="heading-primary">
-        <span class="heading-primary--main">Outdoors</span><span class="heading-primary--sub">is where life
-          happens</span>
-      </h1>
+      <span class="heading-primary">
+        <h1 class="heading-primary--main heading-fancy">Outdoors</h1>
+        <span class="heading-primary--sub">is where life happens</span>
+      </span>
       <a href="#section-tours" class="btn btn--white btn--animated btn--heading">Discover our tours</a>
     </div>
   </header>
@@ -78,9 +79,27 @@
         </div>
         <div class="col-1-of-2">
           <div class="composition">
-            <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
-            <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
-            <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+            <picture>
+              <source
+                data-srcset="img/nat-1-400x.jpg 400w, img/nat-1-600x.jpg 600w, img/nat-1-800x.jpg 800w, img/nat-1-1000x.jpg 1000w"
+                sizes="(min-width: 50rem) 15vw, 25vw">
+              <img data-src="img/nat-1-800x.jpg" alt="Photo 1" loading="lazy"
+                class="composition__photo composition__photo--p1">
+            </picture>
+            <picture>
+              <source
+                data-srcset="img/nat-2-400x.jpg 400w, img/nat-2-600x.jpg 600w, img/nat-2-800x.jpg 800w, img/nat-2-1000x.jpg 1000w"
+                sizes="(min-width: 50rem) 15vw, 25vw">
+              <img data-src="img/nat-2-800x.jpg" alt="Photo 2" loading="lazy"
+                class="composition__photo composition__photo--p2">
+            </picture>
+            <picture>
+              <source
+                data-srcset="img/nat-3-400x.jpg 400w, img/nat-3-600x.jpg 600w, img/nat-3-800x.jpg 800w, img/nat-3-1000x.jpg 1000w"
+                sizes="(min-width: 50rem) 15vw, 25vw">
+              <img data-src="img/nat-3-800x.jpg" alt="Photo 3" loading="lazy"
+                class="composition__photo composition__photo--p3">
+            </picture>
           </div>
         </div>
       </div>
@@ -89,57 +108,57 @@
     <section class="section-features" id="section-features">
 
       <div class="section-features--row row">
-          <div class="col-1-of-4">
-            <div class="feature-box">
-              <!-- <img class="feature-box__icon icon" src="img/svg/globe.svg" alt="Globe Icon"> -->
-              <!-- <img src="img/icon/opt/basic_world.svg" alt="" class="feature-box__icon icon"> -->
-              <i class="feature-box__icon icon icon-basic-world"></i>
-              <h3 class="heading-tertiary u-margin-bottom-small">Explore the world</h3>
-              <p class="feature-box__text">
-                Finding a needle in a haystack isn't hard when every straw is
-                computerized.
-              </p>
-            </div>
+        <div class="col-1-of-4">
+          <div class="feature-box">
+            <!-- <img class="feature-box__icon icon" src="img/svg/globe.svg" alt="Globe Icon"> -->
+            <!-- <img src="img/icon/opt/basic_world.svg" alt="" class="feature-box__icon icon"> -->
+            <i class="feature-box__icon icon icon-basic-world"></i>
+            <h3 class="heading-tertiary u-margin-bottom-small">Explore the world</h3>
+            <p class="feature-box__text">
+              Finding a needle in a haystack isn't hard when every straw is
+              computerized.
+            </p>
           </div>
+        </div>
 
-          <div class="col-1-of-4">
-            <div class="feature-box">
-              <!-- <img class="feature-box__icon icon" src="img/svg/globe.svg" alt="Globe Icon"> -->
-              <!-- <img src="img/icon/opt/basic_world.svg" alt="" class="feature-box__icon icon"> -->
-              <i class="feature-box__icon icon icon-basic-compass"></i>
-              <h3 class="heading-tertiary u-margin-bottom-small">Meet Nature</h3>
-              <p class="feature-box__text">
-                Finding a needle in a haystack isn't hard when every straw is
-                computerized.
-              </p>
-            </div>
+        <div class="col-1-of-4">
+          <div class="feature-box">
+            <!-- <img class="feature-box__icon icon" src="img/svg/globe.svg" alt="Globe Icon"> -->
+            <!-- <img src="img/icon/opt/basic_world.svg" alt="" class="feature-box__icon icon"> -->
+            <i class="feature-box__icon icon icon-basic-compass"></i>
+            <h3 class="heading-tertiary u-margin-bottom-small">Meet Nature</h3>
+            <p class="feature-box__text">
+              Finding a needle in a haystack isn't hard when every straw is
+              computerized.
+            </p>
           </div>
+        </div>
 
-          <div class="col-1-of-4">
-            <div class="feature-box">
-              <!-- <img class="feature-box__icon icon" src="img/svg/globe.svg" alt="Globe Icon"> -->
-              <!-- <img src="img/icon/opt/basic_world.svg" alt="" class="feature-box__icon icon"> -->
-              <i class="feature-box__icon icon icon-basic-map"></i>
-              <h3 class="heading-tertiary u-margin-bottom-small">Find your way</h3>
-              <p class="feature-box__text">
-                Finding a needle in a haystack isn't hard when every straw is
-                computerized.
-              </p>
-            </div>
+        <div class="col-1-of-4">
+          <div class="feature-box">
+            <!-- <img class="feature-box__icon icon" src="img/svg/globe.svg" alt="Globe Icon"> -->
+            <!-- <img src="img/icon/opt/basic_world.svg" alt="" class="feature-box__icon icon"> -->
+            <i class="feature-box__icon icon icon-basic-map"></i>
+            <h3 class="heading-tertiary u-margin-bottom-small">Find your way</h3>
+            <p class="feature-box__text">
+              Finding a needle in a haystack isn't hard when every straw is
+              computerized.
+            </p>
           </div>
+        </div>
 
-          <div class="col-1-of-4">
-            <div class="feature-box">
-              <!-- <img class="feature-box__icon icon" src="img/svg/globe.svg" alt="Globe Icon"> -->
-              <!-- <img src="img/icon/opt/basic_world.svg" alt="" class="feature-box__icon icon"> -->
-              <i class="feature-box__icon icon icon-basic-heart"></i>
-              <h3 class="heading-tertiary u-margin-bottom-small">Live a healthier life</h3>
-              <p class="feature-box__text">
-                Finding a needle in a haystack isn't hard when every straw is
-                computerized.
-              </p>
-            </div>
+        <div class="col-1-of-4">
+          <div class="feature-box">
+            <!-- <img class="feature-box__icon icon" src="img/svg/globe.svg" alt="Globe Icon"> -->
+            <!-- <img src="img/icon/opt/basic_world.svg" alt="" class="feature-box__icon icon"> -->
+            <i class="feature-box__icon icon icon-basic-heart"></i>
+            <h3 class="heading-tertiary u-margin-bottom-small">Live a healthier life</h3>
+            <p class="feature-box__text">
+              Finding a needle in a haystack isn't hard when every straw is
+              computerized.
+            </p>
           </div>
+        </div>
       </div>
     </section>
 
@@ -252,13 +271,17 @@
     </section>
 
     <section class="section-stories" id="section-stories">
-      <div class="bg-video">
-        <video class="bg-video__content" autoplay muted loop preload="auto">
-          <source src="img/video.mp4" type="video/mp4">
-          <source src="img/video.webm" type="video/webm">
-          Your browser is not supported!
-        </video>
-        <caption>Background video of the beach</caption>
+      <div class="bg-video-overlay">
+        <div class="bg-video">
+          <video class="bg-video__content" id="bgvideo" width="100vw"
+            poster="/img/coverr-amalfi-coast-1570371443102.jpg" muted loop preload="auto">
+            <source src="/img/amalfi-coast-x265.mp4" type="video/mp4">
+            <source src="/img/amalfi-coast-vp9.webm" type="video/webm">
+            <source src="/img/amalfi-coast-x264.mp4" type="video/mp4">
+            <p>Your browser is not supported!</p>
+          </video>
+          <caption>Background video of the beach</caption>
+        </div>
       </div>
 
       <div class="u-center-text u-margin-bottom-big">
@@ -270,7 +293,10 @@
       <div class="row">
         <div class="story">
           <figure class="story__shape">
-            <img src="img/nat-8.jpg" alt="Person on a tour" class="story__img">
+            <picture>
+              <source data-srcset="img/nat-8-600x.jpg 600w, img/nat-8-800x.jpg 800w" sizes="15vw">
+              <img data-src="img/nat-8-600x.jpg" loading="lazy" alt="Person on a tour" class="story__img lazyload">
+            </picture>
             <figcaption class="story__caption">Mary Smith</figcaption>
           </figure>
           <div class="story__text">
@@ -286,7 +312,10 @@
       <div class="row">
         <div class="story">
           <figure class="story__shape">
-            <img src="img/nat-9.jpg" alt="Person on a tour" class="story__img">
+            <picture>
+              <source data-srcset="img/nat-9-600x.jpg 600w, img/nat-9-800x.jpg 800w" sizes="15vw">
+              <img data-src="img/nat-9-600x.jpg" loading="lazy" alt="Person on a tour" class="story__img lazyload">
+            </picture>
             <figcaption class="story__caption">Jack Wilson</figcaption>
           </figure>
           <div class="story__text">
@@ -358,7 +387,7 @@
 
   <footer class="footer">
     <div class="footer__logo-box">
-      <img src="img/logo-green-2x.png" alt="Full logo" class="footer__logo">
+      <img src="img/logo-green-2x.png" loading="lazy" alt="Full logo" class="footer__logo lazyload">
     </div>
     <div class="row">
       <div class="col-1-of-2">
@@ -387,8 +416,10 @@
   <div class="popup" id="popup">
     <div class="popup__content">
       <div class="popup__left">
-        <img src="img/nat-8.jpg" alt="Tour Photo" class="popup__img">
-        <img src="img/nat-9.jpg" alt="Tour Photo" class="popup__img">
+        <img data-srcset="img/nat-8-400x.jpg 400w, img/nat-8-600x.jpg 600w, img/nat-8-800x.jpg 800w"
+          data-src="img/nat-8-600x.jpg" loading="lazy" alt="Tour Photo" class="popup__img">
+        <img data-srcset="img/nat-9-400x.jpg 400w, img/nat-9-600x.jpg 600w, img/nat-9-800x.jpg 800w"
+          data-src="img/nat-9-600x.jpg" loading="lazy" alt="Tour Photo" class="popup__img">
       </div>
       <div class="popup__right">
         <a href="#section-tours" class="popup__close">&times;</a>
@@ -412,35 +443,7 @@
     </div>
   </div>
 
-
-  <!-- <section class="grid-test">
-        <div class="row">
-            <div class="col-1-of-2">Col 1 of 2</div>
-            <div class="col-1-of-2">Col 1 of 2</div>
-        </div>
-
-        <div class="row">
-            <div class="col-1-of-3">Col 1 of 3</div>
-            <div class="col-1-of-3">Col 1 of 3</div>
-            <div class="col-1-of-3">Col 1 of 3</div>
-        </div>
-
-        <div class="row">
-            <div class="col-1-of-3">Col 1 of 3</div>
-            <div class="col-2-of-3">Col 2 of 3</div>
-        </div>
-
-        <div class="row">
-            <div class="col-1-of-4">Col 1 of 4</div>
-            <div class="col-1-of-4">Col 1 of 4</div>
-            <div class="col-2-of-4">Col 2 of 4</div>
-        </div>
-
-        <div class="row">
-            <div class="col-1-of-4">Col 1 of 4</div>
-            <div class="col-3-of-4">Col 3 of 4</div>
-        </div>
-    </section> -->
+  <script src="./js/index.js"></script>
 </body>
 
 </html>

@@ -4,14 +4,27 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+    "compile:sass": "node-sass sass/main.scss css/style.css -w",
+    "compile:dartsass": "sass sass/main.scss css/style.css --watch --style=\"compressed\"",
+    "dev": "parcel index.html",
+    "build": "parcel build index.html",
+    "build:verbose": "parcel build index.html --log-level 3"
   },
   "devDependencies": {
     "eyeglass": "^2.4.1",
-    "node-sass": "^4.13.0"
+    "node-sass": "^4.13.0",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-data-src": "^1.0.1",
+    "parcel-plugin-imagemin": "^3.0.0",
+    "posthtml-lazyload": "^1.0.5",
+    "posthtml-modules": "^0.4.2",
+    "sass": "^1.24.0"
   },
   "dependencies": {
     "compass-mixins": "^0.12.10",
+    "parcel-plugin-typescript": "^1.0.0",
+    "posthtml": "^0.12.0",
+    "posthtml-img-autosize": "^0.1.4",
     "sass-mq": "^5.0.1",
     "typeface-lato": "^0.0.75"
   }

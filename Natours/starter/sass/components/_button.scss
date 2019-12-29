@@ -77,6 +77,7 @@
     color: $color-white;
     @include transition(0.3s, ease-out);
     outline: 3px solid transparent;
+    font-family: "Lato", "sans-serif";
 
     &::after {
       background-color: $color-primary;
@@ -117,7 +118,19 @@
     flex: 0 1 0;
     width: 50%;
     align-self: center;
+
+    @include respond(phone) {
+      max-width: 80%;
+      width: auto;
+    }
   }
+
+  // @include respond(phone) {
+  //   &--heading {
+  //     // padding: 2rem 4rem !important;
+  //     width: 100%;
+  //   }
+  // }
 }
 
 .btn-text {

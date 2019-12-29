@@ -3,12 +3,13 @@
   @include hardware(true, 100000px);
 
   &__photo {
-    @include size(55%, unset);
+    @include size(55%, auto);
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
     border-radius: 0.2rem;
     @include ha;
     z-index: 10;
     outline-offset: 2rem;
+    max-width: 100%;
     @include transition(0.42s, $photo-benz);
 
     @include respond(tab-port) {

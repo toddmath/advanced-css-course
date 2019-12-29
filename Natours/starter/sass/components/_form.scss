@@ -3,6 +3,19 @@
     margin-bottom: 2rem;
   }
 
+  @include respond(tab-port) {
+    .heading-secondary {
+      @include center-block;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    &__group:last-of-type {
+      @include center-block;
+      text-align: center;
+    }
+  }
+
   &__input {
     @include font-size(15);
     @include line-height(15);
@@ -18,6 +31,10 @@
     outline: none;
     transition: all 0.3s;
     @include hardware;
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
 
     &:focus {
       outline: none;
@@ -72,6 +89,11 @@
   &__radio-group {
     @include size(49%, unset);
     display: inline-block;
+
+    @include respond(tab-port) {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
   }
 
   &__radio-input {
